@@ -19,8 +19,4 @@ class Line
 
     raise ArgumentError, "Erroneous value added: #{characters} " unless account_digit
   end
-
-  def contains_valid_characters?
-    characters.to_s =~ /^[|_ ]{27}$/
-  end
 end

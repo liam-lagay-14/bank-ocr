@@ -4,16 +4,15 @@ require_relative '../UserStory1/line'
 
 describe Line do
 
-  let(:line) { Line.new('  ||||| |||| ||  |||_|  |_ ') }
+  let(:line) { Line.new([' _ ', ' _|', '|_ ']) }
 
-  subject { line }
-
-  it { expect(subject.contains_valid_characters?).to eq(0) }
-
-
-  context 'has invalid characters' do
-    subject { Line.new('___ || 1233 ___ |||||||||') }
-
-    it { expect(subject.contains_valid_characters?).to eq(nil) }
+  it 'returns a value of 2' do
+    expect(line.account_digit).to eq(2)
   end
+
+  it 'throws an error if invalid value is passed' do
+    expect { Line.new([' |', '__', '_ ']) }.to raise_error(ArgumentError)
+  end
+
+
 end

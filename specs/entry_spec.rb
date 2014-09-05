@@ -1,6 +1,5 @@
 require 'rspec'
 require_relative '../UserStory1/entry'
-require_relative '../UserStory1/line'
 
 describe Entry do
 
@@ -14,6 +13,10 @@ describe Entry do
     expect(valid_line_block.raw_lines.size).to eq(3)
 
     expect(valid_line_block.data.size).to eq(9)
+  end
+
+  it 'should return a valid account number' do
+    expect(valid_line_block.account_number).to eq('678902345')
   end
 
   context 'should raise an error if an invalid entry is passed in' do

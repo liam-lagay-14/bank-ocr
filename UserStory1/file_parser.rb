@@ -9,7 +9,7 @@ class FileParser
     @filename = BASEDIR + filename
     @lines = []
     @entries = []
-    @number_of_lines_per_account = options.fetch(:number_of_lines_per_account, 4)
+    @number_of_lines_per_account = options.fetch(:number_of_lines_per_account, 3)
   end
 
   def load_accounts_from_file
@@ -21,6 +21,7 @@ class FileParser
       end
 
       load_lines.each do |line_block|
+        puts line_block
         entries << Entry.new(line_block)
       end
     else
