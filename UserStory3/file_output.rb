@@ -1,0 +1,3 @@
+class FileOutput
+
+end

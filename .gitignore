@@ -12,6 +12,4 @@
 *.o
 *.a
 mkmf.log
-*idea/*.iml
-.idea/workspace.xml
-.idea/tasks.xml
+/.idea/
