@@ -1,4 +1,4 @@
-require_relative 'line'
+require_relative 'entry_data'
 require_relative 'account'
 require 'enumerator'
 
@@ -29,7 +29,7 @@ class Entry
         #Strip out newlines (was doing this in my IDE)
         character_digits << value.sub("\n", " ")
       end
-      digits << Line.new(character_digits)
+      digits << EntryData.new(character_digits)
       character_digits = []
     end
     digits
@@ -43,6 +43,9 @@ class Entry
     end
 
     account_number_to_display = Account.new(account_number_to_display)
+
+    #adding an output statement for purposes of testing
+    puts account_number_to_display.account_number
 
     account_number_to_display.account_number
   end

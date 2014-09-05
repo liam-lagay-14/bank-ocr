@@ -1,4 +1,4 @@
-class Line
+class EntryData
   attr_reader :characters, :account_digit
 
  VALID_VALUES = { 0 => [' _ ', '| |', '|_|'],
