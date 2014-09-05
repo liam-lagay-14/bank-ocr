@@ -2,7 +2,7 @@ require_relative 'entry_data'
 require_relative 'account'
 
 class Entry
-  attr_accessor :raw_lines, :data, :account_number
+  attr_accessor :raw_lines, :data, :account, :account_status
 
   def initialize(raw_lines, options={})
     @raw_lines = raw_lines
@@ -10,8 +10,7 @@ class Entry
     @character_width = options.fetch(:character_width, 3)
     @character_height = options.fetch(:character_height, 3)
     @data = process_data
-
-    @account_number = calculate_account_number
+    @account = obtain_account_details
   end
 
   private
@@ -34,18 +33,13 @@ class Entry
     digits
   end
 
-  def calculate_account_number
+  def obtain_account_details
     account_number_to_display = ''
 
-    data.map.with_index  do |digit, index|
-       account_number_to_display += digit.account_digit.to_s
+    data.each  do |digit|
+       account_number_to_display += digit.account_digit
     end
 
-    account_number_to_display = Account.new(account_number_to_display)
-
-    #adding an output statement for purposes of testing
-    puts account_number_to_display.account_number
-
-    account_number_to_display.account_number
+    Account.new(account_number_to_display)
   end
 end

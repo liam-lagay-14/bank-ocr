@@ -15,8 +15,6 @@ class EntryData
 
   def initialize(characters)
     @characters = characters
-    @account_digit = VALID_VALUES.key(characters)
-
-    raise ArgumentError, "Erroneous value added: #{characters} " unless account_digit
+    @account_digit = (VALID_VALUES.key(characters) || '?').to_s
   end
 end

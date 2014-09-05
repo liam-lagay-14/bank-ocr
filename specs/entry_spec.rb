@@ -7,11 +7,9 @@ describe Entry do
                                       '  |  |  |  |  |  |  |  |  |',
                                       '  |  |  |  |  |  |  |  |  |'])}
 
-  let(:valid_line_data_invalid_checksum) { Entry.new([' _  _  _  _  _  _  _  _  _ ',
-                                                      '|_||_||_||_||_||_||_||_||_|',
-                                                      '|_||_||_||_||_||_||_||_||_|'])}
-
-  let(:invalid_line_block) { Entry.new(%w(nonsense1 234453453 ----))}
+  let(:invalid_line_block) { Entry.new(['        _           _      ',
+                                       ' |_||_|      __   __ ||||||',
+                                       ' _________|||||||||||||||||'])}
 
   it('should return the correct data and entries') {
     expect(valid_line_block.raw_lines.size).to eq(3)
@@ -20,19 +18,12 @@ describe Entry do
   }
 
   it 'should return a valid account number' do
-    expect(valid_line_block.account_number).to eq('711111111')
+    expect(valid_line_block.account.account_number).to eq('711111111')
   end
 
-  context 'should raise an error if an invalid entry is passed in' do
+  context 'should return a number of ? characters' do
     subject { invalid_line_block }
 
-    it { expect { subject }.to raise_error(ArgumentError) }
+    it { expect(subject.account.account_number).to eq('?????????') }
   end
-
-  context 'should raise an error if an invalid checksum is calculated' do
-    subject { valid_line_data_invalid_checksum }
-
-    it { expect { subject}.to raise_error(ArgumentError) }
-  end
-
 end

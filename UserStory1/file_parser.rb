@@ -21,12 +21,12 @@ class FileParser
       end
 
       load_lines.each do |line_block|
-        puts line_block
         entries << Entry.new(line_block)
       end
     else
       raise ArgumentError, "File #{filename} does not exist."
     end
+    entries
   end
 
 
