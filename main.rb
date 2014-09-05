@@ -1,5 +1,5 @@
 require 'pathname'
-require_relative 'UserStory1/file_parser'
+require_relative 'lib/file_parser'
 
 puts 'User Story 3 execution by Liam Lagay'
 

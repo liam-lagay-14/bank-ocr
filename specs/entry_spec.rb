@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../UserStory1/entry'
+require_relative '../lib/entry'
 
 describe Entry do
 

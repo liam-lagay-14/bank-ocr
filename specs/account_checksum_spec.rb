@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../UserStory2/account_checksum'
+require_relative '../lib/account_checksum'
 
 describe AccountCheckSum do
   let(:valid_account_number) { AccountCheckSum.new('711111111')}

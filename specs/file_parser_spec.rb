@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../UserStory1/file_parser'
+require_relative '../lib/file_parser'
 
 describe FileParser do
   let(:parser) { FileParser.new('/TestFiles/testfile1.txt', number_of_lines_per_account: 3) }

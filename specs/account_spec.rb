@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../UserStory1/account'
+require_relative '../lib/account'
 
 describe Account do
 

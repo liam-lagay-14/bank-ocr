@@ -1,4 +1,4 @@
-require_relative '../UserStory2/account_checksum'
+require_relative 'account_checksum'
 
 class Account
   attr_accessor :account_number, :account_details
