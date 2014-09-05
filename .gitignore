@@ -12,6 +12,6 @@
 *.o
 *.a
 mkmf.log
-*.iml
+*idea/*.iml
 .idea/workspace.xml
 .idea/tasks.xml

@@ -1,6 +1,5 @@
 require_relative 'entry_data'
 require_relative 'account'
-require 'enumerator'
 
 class Entry
   attr_accessor :raw_lines, :data, :account_number
