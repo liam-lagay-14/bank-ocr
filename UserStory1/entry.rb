@@ -26,7 +26,7 @@ class Entry
       end_position = start_position + 2
       0.upto(@character_height - 1) do |index_number|
         value = raw_lines[index_number].chars[start_position..end_position].join
-        #Strip out newlines (was doing this in my IDE)
+        #Strip out newlines (was doing this in my IDE).
         character_digits << value.sub("\n", " ")
       end
       digits << EntryData.new(character_digits)
