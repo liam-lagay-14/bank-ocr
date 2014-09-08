@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = BankOCR::VERSION
   spec.authors       = ["Liam Lagay"]
   spec.email         = ["liam.lagay@sage.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
+  spec.summary       = %q{First Code Kata exercise}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
   spec.license       = "MIT"
