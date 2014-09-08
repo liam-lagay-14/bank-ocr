@@ -2,7 +2,7 @@ require 'rspec'
 require_relative '../lib/file_parser'
 
 describe FileParser do
-  let(:parser) { FileParser.new('/TestFiles/testfile1.txt', number_of_lines_per_account: 3) }
+  let(:parser) { FileParser.new('/TestFiles/testdata.txt', number_of_lines_per_account: 3) }
 
   it 'should parse the correct number of lines' do
     expect { parser.load_accounts_from_file }.to change { parser.lines.size }.from(0).to(33)

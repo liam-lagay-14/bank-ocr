@@ -4,7 +4,7 @@ require_relative 'lib/file_parser'
 puts 'User Story 4 execution by Liam Lagay'
 puts Time.now
 
-file = FileParser.new('/TestFiles/testfile1.txt', number_of_lines_per_account:3)
+file = FileParser.new('/TestFiles/testdata.txt', number_of_lines_per_account:3)
 entries = file.load_accounts_from_file
 
 entries.each do |entry|
