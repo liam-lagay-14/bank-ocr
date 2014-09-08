@@ -1,5 +1,6 @@
 class EntryData
-  attr_reader :characters, :account_digit
+  attr_reader :characters, :character_replacements
+  attr_accessor :account_digit
 
  VALID_VALUES = { 0 => [' _ ', '| |', '|_|'],
                   1 => ['   ', '  |', '  |'],
@@ -13,8 +14,32 @@ class EntryData
                   9 => [' _ ', '|_|', ' _|']}
 
 
-  def initialize(characters)
+  def initialize(characters, options = {})
     @characters = characters
-    @account_digit = (VALID_VALUES.key(characters) || '?').to_s
+    @character_replacements = ['|', '_', ' ']
+    @character_height = options.fetch(:character_height, 3)
+    @account_digit = calculate_account_digit_from_characters
+  end
+
+  def substitute_underscore_or_pipe_into_characters
+    list_of_digits = []
+
+    characters.each do |character|
+       0.upto(@character_height - 1) do |index_number|
+         original_character = character[index_number]
+         character_replacements.each do |replacement|
+           character[index_number] = replacement
+           digit = calculate_account_digit_from_characters
+           list_of_digits << digit if digit != '?'
+         end
+         character[index_number] = original_character if original_character != nil end
+    end
+    list_of_digits
+  end
+
+  private
+
+  def calculate_account_digit_from_characters
+    (VALID_VALUES.key(characters) || '?').to_s
   end
 end
