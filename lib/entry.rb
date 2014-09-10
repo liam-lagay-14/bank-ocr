@@ -21,9 +21,9 @@ class Entry
     digits = []
     character_digits = []
 
-    (0..@number_of_characters - 1).step(@character_width) do |start_position|
+    (0...@number_of_characters - 1).step(@character_width) do |start_position|
       end_position = start_position + 2
-      0.upto(@character_height - 1) do |index_number|
+      (0...@character_height).each do |index_number|
         value = raw_lines[index_number].chars[start_position..end_position].join
         #Strip out newlines (was doing this in my IDE).
         character_digits << value.sub("\n", '')
@@ -49,16 +49,20 @@ class Entry
     data.each do |digit|
         digit_list = digit.substitute_underscore_or_pipe_into_characters
         if digit_list.size > 0
-          digit_list.each do |possible_digit|
-            digit.account_digit = possible_digit
-            alternative_account = create_new_account
-            if alternative_account.account_details.empty?
-              alternative_accounts << alternative_account.account_number
-            end
-          end
+          create_accounts_and_check_validity(alternative_accounts, digit, digit_list)
         end
       end
     alternative_accounts.uniq
+  end
+
+  def create_accounts_and_check_validity(alternative_accounts, digit, digit_list)
+    digit_list.each do |possible_digit|
+      digit.account_digit = possible_digit
+      alternative_account = create_new_account
+      if alternative_account.account_details.empty?
+        alternative_accounts << alternative_account.account_number
+      end
+    end
   end
 
   def create_new_account

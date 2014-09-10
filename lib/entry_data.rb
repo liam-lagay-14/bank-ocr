@@ -25,16 +25,21 @@ class EntryData
     list_of_digits = []
 
     characters.each do |character|
-       0.upto(@character_height - 1) do |index_number|
+       (0...@character_height).each do |index_number|
          original_character = character[index_number]
-         character_replacements.each do |replacement|
-           character[index_number] = replacement
-           digit = calculate_account_digit_from_characters
-           list_of_digits << digit if digit != '?'
-         end
-         character[index_number] = original_character if original_character != nil end
+         calculate_possible_list_of_digits(character, index_number, list_of_digits)
+         character[index_number] = original_character if original_character != nil
+       end
     end
     list_of_digits
+  end
+
+  def calculate_possible_list_of_digits(character, index_number, list_of_digits)
+    character_replacements.each do |replacement|
+      character[index_number] = replacement
+      digit = calculate_account_digit_from_characters
+      list_of_digits << digit if digit != '?'
+    end
   end
 
   private
